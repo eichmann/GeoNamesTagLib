@@ -1,0 +1,108 @@
+classes
+http://www.geonames.org/ontology#Feature	10951423
+http://www.geonames.org/ontology#Code	690
+http://www.w3.org/2002/07/owl#Restriction	17
+http://www.w3.org/2002/07/owl#ObjectProperty	16
+http://www.w3.org/2002/07/owl#DatatypeProperty	13
+http://www.geonames.org/ontology#Class	9
+http://www.w3.org/2002/07/owl#Class	7
+http://xmlns.com/foaf/0.1/Person	2
+http://www.w3.org/2002/07/owl#Ontology	1
+http://www.w3.org/2002/07/owl#SymmetricProperty	1
+http://www.w3.org/2002/07/owl#TransitiveProperty	1
+http://xmlns.com/foaf/0.1/Organization	1
+properties
+http://www.w3.org/1999/02/22-rdf-syntax-ns#type	10952181
+http://www.w3.org/2000/01/rdf-schema#isDefinedBy	10951424
+http://www.geonames.org/ontology#locationMap	10951423
+http://www.geonames.org/ontology#name	10951423
+http://www.w3.org/2003/01/geo/wgs84_pos#lat	10951423
+http://www.w3.org/2003/01/geo/wgs84_pos#long	10951423
+http://www.geonames.org/ontology#parentFeature	10951422
+http://www.geonames.org/ontology#featureClass	10946162
+http://www.geonames.org/ontology#countryCode	10945713
+http://www.geonames.org/ontology#parentCountry	10945460
+http://www.geonames.org/ontology#featureCode	10855631
+http://www.geonames.org/ontology#nearbyFeatures	10613863
+http://www.geonames.org/ontology#parentADM1	10517788
+http://www.geonames.org/ontology#alternateName	9858890
+http://www.geonames.org/ontology#parentADM2	5323948
+http://www.w3.org/2003/01/geo/wgs84_pos#alt	2325787
+http://www.geonames.org/ontology#parentADM3	1027840
+http://www.geonames.org/ontology#wikipediaArticle	489230
+http://www.w3.org/2000/01/rdf-schema#seeAlso	476924
+http://www.geonames.org/ontology#population	474045
+http://www.geonames.org/ontology#parentADM4	363703
+http://www.geonames.org/ontology#childrenFeatures	337560
+http://www.geonames.org/ontology#officialName	139308
+http://www.geonames.org/ontology#postalCode	133885
+http://xmlns.com/foaf/0.1/page	38907
+http://www.w3.org/2004/02/skos/core#prefLabel	3251
+http://www.w3.org/2004/02/skos/core#definition	1211
+http://www.w3.org/2004/02/skos/core#notation	690
+http://www.w3.org/2004/02/skos/core#inScheme	689
+http://www.geonames.org/ontology#neighbouringFeatures	257
+http://www.w3.org/2000/01/rdf-schema#comment	33
+http://www.w3.org/2000/01/rdf-schema#label	33
+http://www.w3.org/2002/07/owl#deprecated	23
+http://www.w3.org/2000/01/rdf-schema#domain	22
+http://www.w3.org/2004/02/skos/core#historyNote	21
+http://www.w3.org/2000/01/rdf-schema#subClassOf	20
+http://www.w3.org/2000/01/rdf-schema#range	17
+http://www.w3.org/2002/07/owl#onProperty	17
+http://www.w3.org/2000/01/rdf-schema#subPropertyOf	13
+http://www.w3.org/2002/07/owl#maxCardinality	7
+http://www.w3.org/2002/07/owl#cardinality	5
+http://www.w3.org/2002/07/owl#hasValue	5
+http://purl.org/dc/terms/contributor	3
+http://xmlns.com/foaf/0.1/name	3
+http://www.w3.org/1999/02/22-rdf-syntax-ns#first	2
+http://www.w3.org/1999/02/22-rdf-syntax-ns#rest	2
+http://www.w3.org/2002/07/owl#equivalentClass	2
+http://xmlns.com/foaf/0.1/homepage	2
+http://id.loc.gov/vocabulary/relators/dtm	1
+http://purl.org/dc/terms/creator	1
+http://purl.org/dc/terms/description	1
+http://purl.org/dc/terms/issued	1
+http://purl.org/dc/terms/modified	1
+http://purl.org/dc/terms/publisher	1
+http://purl.org/dc/terms/title	1
+http://purl.org/vocab/vann/preferredNamespacePrefix	1
+http://purl.org/vocab/vann/preferredNamespaceUri	1
+http://www.w3.org/2002/07/owl#priorVersion	1
+http://www.w3.org/2002/07/owl#propertyChainAxiom	1
+http://www.w3.org/2002/07/owl#versionInfo	1
+http://www.w3.org/ns/adms#relatedDocumentation	1
+http://xmlns.com/foaf/0.1/workplaceHomepage	1
+property types
+http://www.geonames.org/ontology#Feature	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2002/07/owl#Class	10951423
+http://www.geonames.org/ontology#Code	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2002/07/owl#Class	690
+http://www.geonames.org/ontology#Class	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2002/07/owl#Class	9
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#parentFeature	http://www.geonames.org/ontology#Feature	10951422
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#featureClass	http://www.geonames.org/ontology#Class	10946162
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#parentCountry	http://www.geonames.org/ontology#Feature	10945460
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#featureCode	http://www.geonames.org/ontology#Code	10854674
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#parentADM1	http://www.geonames.org/ontology#Feature	10517788
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#parentADM2	http://www.geonames.org/ontology#Feature	5323948
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#parentADM3	http://www.geonames.org/ontology#Feature	1027840
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#parentADM4	http://www.geonames.org/ontology#Feature	363703
+http://www.geonames.org/ontology#Code	http://www.w3.org/2004/02/skos/core#inScheme	http://www.geonames.org/ontology#Class	689
+http://www.w3.org/2002/07/owl#ObjectProperty	http://www.w3.org/2000/01/rdf-schema#domain	http://www.w3.org/2002/07/owl#Class	15
+http://www.w3.org/2002/07/owl#DatatypeProperty	http://www.w3.org/2000/01/rdf-schema#domain	http://www.w3.org/2002/07/owl#Class	7
+http://www.w3.org/2002/07/owl#SymmetricProperty	http://www.w3.org/2000/01/rdf-schema#domain	http://www.w3.org/2002/07/owl#Class	1
+http://www.w3.org/2002/07/owl#TransitiveProperty	http://www.w3.org/2000/01/rdf-schema#domain	http://www.w3.org/2002/07/owl#Class	1
+http://www.w3.org/2002/07/owl#Class	http://www.w3.org/2000/01/rdf-schema#subClassOf	http://www.w3.org/2002/07/owl#Restriction	12
+http://www.w3.org/2002/07/owl#Class	http://www.w3.org/2000/01/rdf-schema#subClassOf	http://www.w3.org/2002/07/owl#Class	1
+http://www.w3.org/2002/07/owl#ObjectProperty	http://www.w3.org/2000/01/rdf-schema#range	http://www.w3.org/2002/07/owl#Class	11
+http://www.w3.org/2002/07/owl#ObjectProperty	http://www.w3.org/2000/01/rdf-schema#range	http://www.w3.org/2002/07/owl#Restriction	5
+http://www.w3.org/2002/07/owl#SymmetricProperty	http://www.w3.org/2000/01/rdf-schema#range	http://www.w3.org/2002/07/owl#Class	1
+http://www.w3.org/2002/07/owl#TransitiveProperty	http://www.w3.org/2000/01/rdf-schema#range	http://www.w3.org/2002/07/owl#Class	1
+http://www.w3.org/2002/07/owl#Restriction	http://www.w3.org/2002/07/owl#onProperty	http://www.w3.org/2002/07/owl#ObjectProperty	11
+http://www.w3.org/2002/07/owl#Restriction	http://www.w3.org/2002/07/owl#onProperty	http://www.w3.org/2002/07/owl#DatatypeProperty	4
+http://www.w3.org/2002/07/owl#ObjectProperty	http://www.w3.org/2000/01/rdf-schema#subPropertyOf	http://www.w3.org/2002/07/owl#ObjectProperty	5
+http://www.w3.org/2002/07/owl#ObjectProperty	http://www.w3.org/2000/01/rdf-schema#subPropertyOf	http://www.w3.org/2002/07/owl#TransitiveProperty	5
+http://www.w3.org/2002/07/owl#DatatypeProperty	http://www.w3.org/2000/01/rdf-schema#subPropertyOf	http://www.w3.org/2002/07/owl#DatatypeProperty	4
+http://www.w3.org/2002/07/owl#Restriction	http://www.w3.org/2002/07/owl#hasValue	http://www.geonames.org/ontology#Code	5
+http://xmlns.com/foaf/0.1/Organization	http://id.loc.gov/vocabulary/relators/dtm	http://xmlns.com/foaf/0.1/Person	1
+http://www.w3.org/2002/07/owl#Ontology	http://purl.org/dc/terms/creator	http://xmlns.com/foaf/0.1/Person	1
+http://www.w3.org/2002/07/owl#Ontology	http://purl.org/dc/terms/publisher	http://xmlns.com/foaf/0.1/Organization	1
