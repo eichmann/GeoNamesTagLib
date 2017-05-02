@@ -70,7 +70,12 @@
     <type>pom</type>
     <version>3.0.0</version>
     </dependency>
-	</dependencies>
+  	<dependency>
+  		<groupId>edu.uiowa.icts.taglib</groupId>
+  		<artifactId>UtilTagLib</artifactId>
+  		<version>1.0.4-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 	<build>
 	  	<plugins>
      	     <plugin>

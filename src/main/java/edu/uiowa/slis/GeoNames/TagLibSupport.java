@@ -1,6 +1,9 @@
 package edu.uiowa.slis.GeoNames;
 
+import javax.servlet.http.HttpServletRequest;
+
 import java.util.Hashtable;
+import java.util.Properties;
 
 import org.apache.jena.query.Dataset;
 import org.apache.jena.query.Query;
@@ -11,10 +14,14 @@ import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.Syntax;
 import org.apache.jena.tdb.TDBFactory;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import edu.uiowa.tagUtil.property.PropertyLoader;
+
 @SuppressWarnings("serial")
 public class TagLibSupport extends javax.servlet.jsp.tagext.TagSupport {
-	static final boolean useSPARQL = false;
-	static String endpoint = "http://marengo.info-science.uiowa.edu:2021/sparql";
+	private static final Log log = LogFactory.getLog(TagLibSupport.class);
 	static protected String prefix = 
 		"PREFIX ld4l: <http://bib.ld4l.org/ontology/>"
 			+ "PREFIX ld4lcornell: <http://draft.ld4l.org/cornell/>"
@@ -30,70 +37,60 @@ public class TagLibSupport extends javax.servlet.jsp.tagext.TagSupport {
 	static Hashtable<String, String> classLocalNameHash = new Hashtable<String, String>();
 
 	static {
-		classNameHash.put("http://xmlns.com/foaf/0.1/Image", "Image");
-		classNameHash.put("http://xmlns.com/foaf/0.1/Project", "Project");
-		classNameHash.put("http://xmlns.com/foaf/0.1/Agent", "Agent");
-		classNameHash.put("http://www.geonames.org/ontology#Code", "Code");
-		classNameHash.put("http://www.geonames.org/ontology#GeonamesFeature", "GeonamesFeature");
-		classNameHash.put("http://xmlns.com/foaf/0.1/LabelProperty", "LabelProperty");
-		classNameHash.put("http://www.geonames.org/ontology#Map", "Map");
-		classNameHash.put("http://xmlns.com/foaf/0.1/Document", "Document");
-		classNameHash.put("http://www.w3.org/2002/07/owl#Thing", "Thing");
-		classNameHash.put("http://www.w3.org/2004/02/skos/core#ConceptScheme", "ConceptScheme");
-		classNameHash.put("http://xmlns.com/foaf/0.1/OnlineAccount", "OnlineAccount");
-		classNameHash.put("http://www.w3.org/2004/02/skos/core#Collection", "Collection");
-		classNameHash.put("http://www.w3.org/2004/02/skos/core#OrderedCollection", "OrderedCollection");
-		classNameHash.put("http://xmlns.com/foaf/0.1/PersonalProfileDocument", "PersonalProfileDocument");
-		classNameHash.put("http://xmlns.com/foaf/0.1/Person", "Person");
-		classNameHash.put("http://xmlns.com/foaf/0.1/OnlineGamingAccount", "OnlineGamingAccount");
-		classNameHash.put("http://www.w3.org/2002/07/owl#Nothing", "Nothing");
-		classNameHash.put("http://www.geonames.org/ontology#Class", "Class");
-		classNameHash.put("http://xmlns.com/foaf/0.1/OnlineChatAccount", "OnlineChatAccount");
-		classNameHash.put("http://www.geonames.org/ontology#WikipediaArticle", "WikipediaArticle");
-		classNameHash.put("http://www.geonames.org/ontology#RDFData", "RDFData");
-		classNameHash.put("http://www.geonames.org/ontology#Feature", "Feature");
-		classNameHash.put("http://xmlns.com/foaf/0.1/Group", "Group");
+		classNameHash.put("http://www.w3.org/2002/07/owl#SymmetricProperty", "SymmetricProperty");
 		classNameHash.put("http://xmlns.com/foaf/0.1/Organization", "Organization");
-		classNameHash.put("http://www.w3.org/2004/02/skos/core#Concept", "Concept");
-		classNameHash.put("http://xmlns.com/foaf/0.1/OnlineEcommerceAccount", "OnlineEcommerceAccount");
+		classNameHash.put("http://www.w3.org/2002/07/owl#TransitiveProperty", "TransitiveProperty");
+		classNameHash.put("http://www.w3.org/2002/07/owl#Restriction", "Restriction");
+		classNameHash.put("http://www.geonames.org/ontology#Feature", "Feature");
+		classNameHash.put("http://www.w3.org/2002/07/owl#ObjectProperty", "ObjectProperty");
+		classNameHash.put("http://www.geonames.org/ontology#Code", "Code");
+		classNameHash.put("http://www.geonames.org/ontology#Class", "Class");
+		classNameHash.put("http://xmlns.com/foaf/0.1/Person", "Person");
+		classNameHash.put("http://www.w3.org/2002/07/owl#DatatypeProperty", "DatatypeProperty");
+		classNameHash.put("http://www.w3.org/2002/07/owl#Ontology", "Ontology");
 
-		classLocalNameHash.put("Image", "http://xmlns.com/foaf/0.1/Image");
-		classLocalNameHash.put("Project", "http://xmlns.com/foaf/0.1/Project");
-		classLocalNameHash.put("Agent", "http://xmlns.com/foaf/0.1/Agent");
-		classLocalNameHash.put("Code", "http://www.geonames.org/ontology#Code");
-		classLocalNameHash.put("GeonamesFeature", "http://www.geonames.org/ontology#GeonamesFeature");
-		classLocalNameHash.put("LabelProperty", "http://xmlns.com/foaf/0.1/LabelProperty");
-		classLocalNameHash.put("Map", "http://www.geonames.org/ontology#Map");
-		classLocalNameHash.put("Document", "http://xmlns.com/foaf/0.1/Document");
-		classLocalNameHash.put("Thing", "http://www.w3.org/2002/07/owl#Thing");
-		classLocalNameHash.put("ConceptScheme", "http://www.w3.org/2004/02/skos/core#ConceptScheme");
-		classLocalNameHash.put("OnlineAccount", "http://xmlns.com/foaf/0.1/OnlineAccount");
-		classLocalNameHash.put("Collection", "http://www.w3.org/2004/02/skos/core#Collection");
-		classLocalNameHash.put("OrderedCollection", "http://www.w3.org/2004/02/skos/core#OrderedCollection");
-		classLocalNameHash.put("PersonalProfileDocument", "http://xmlns.com/foaf/0.1/PersonalProfileDocument");
-		classLocalNameHash.put("Person", "http://xmlns.com/foaf/0.1/Person");
-		classLocalNameHash.put("OnlineGamingAccount", "http://xmlns.com/foaf/0.1/OnlineGamingAccount");
-		classLocalNameHash.put("Nothing", "http://www.w3.org/2002/07/owl#Nothing");
-		classLocalNameHash.put("Class", "http://www.geonames.org/ontology#Class");
-		classLocalNameHash.put("OnlineChatAccount", "http://xmlns.com/foaf/0.1/OnlineChatAccount");
-		classLocalNameHash.put("WikipediaArticle", "http://www.geonames.org/ontology#WikipediaArticle");
-		classLocalNameHash.put("RDFData", "http://www.geonames.org/ontology#RDFData");
-		classLocalNameHash.put("Feature", "http://www.geonames.org/ontology#Feature");
-		classLocalNameHash.put("Group", "http://xmlns.com/foaf/0.1/Group");
+		classLocalNameHash.put("SymmetricProperty", "http://www.w3.org/2002/07/owl#SymmetricProperty");
 		classLocalNameHash.put("Organization", "http://xmlns.com/foaf/0.1/Organization");
-		classLocalNameHash.put("Concept", "http://www.w3.org/2004/02/skos/core#Concept");
-		classLocalNameHash.put("OnlineEcommerceAccount", "http://xmlns.com/foaf/0.1/OnlineEcommerceAccount");
+		classLocalNameHash.put("TransitiveProperty", "http://www.w3.org/2002/07/owl#TransitiveProperty");
+		classLocalNameHash.put("Restriction", "http://www.w3.org/2002/07/owl#Restriction");
+		classLocalNameHash.put("Feature", "http://www.geonames.org/ontology#Feature");
+		classLocalNameHash.put("ObjectProperty", "http://www.w3.org/2002/07/owl#ObjectProperty");
+		classLocalNameHash.put("Code", "http://www.geonames.org/ontology#Code");
+		classLocalNameHash.put("Class", "http://www.geonames.org/ontology#Class");
+		classLocalNameHash.put("Person", "http://xmlns.com/foaf/0.1/Person");
+		classLocalNameHash.put("DatatypeProperty", "http://www.w3.org/2002/07/owl#DatatypeProperty");
+		classLocalNameHash.put("Ontology", "http://www.w3.org/2002/07/owl#Ontology");
 	}
 
+	boolean useSPARQL = true;
 	Dataset dataset = null;
+	String tripleStore = null;
+	String endpoint = null;
+	Properties properties = null;
+
+	private void loadProperties() {
+		if (properties != null)
+			return;
+
+		String theURI = ((HttpServletRequest)pageContext.getRequest()).getRequestURI();
+		String applicationRoot = theURI.substring(0, theURI.indexOf('/', 1));
+		log.info("loading " + applicationRoot + ".properties");
+		properties = PropertyLoader.loadProperties(applicationRoot + ".properties");
+		useSPARQL = properties.getProperty("useSPARQL", "true").equals("true");
+		endpoint = properties.getProperty("endpoint", "localhost");
+		tripleStore = properties.getProperty("tripleStore", "localhost");
+
+	}
+
 
 	public ResultSet getResultSet(String queryString) {
+		loadProperties();
 		if (useSPARQL) {
 			Query theClassQuery = QueryFactory.create(queryString, Syntax.syntaxARQ);
 			QueryExecution theClassExecution = QueryExecutionFactory.sparqlService(endpoint, theClassQuery);
 			return theClassExecution.execSelect();
 		} else {
-			dataset = TDBFactory.createDataset("/Volumes/LD4L/geonames");
+			dataset = TDBFactory.createDataset(tripleStore);
 			Query query = QueryFactory.create(queryString, Syntax.syntaxARQ);
 			QueryExecution qexec = QueryExecutionFactory.create(query, dataset);
 			return qexec.execSelect();

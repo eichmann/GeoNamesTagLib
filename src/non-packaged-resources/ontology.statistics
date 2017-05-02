@@ -60,20 +60,6 @@ http://www.w3.org/1999/02/22-rdf-syntax-ns#first	2
 http://www.w3.org/1999/02/22-rdf-syntax-ns#rest	2
 http://www.w3.org/2002/07/owl#equivalentClass	2
 http://xmlns.com/foaf/0.1/homepage	2
-http://id.loc.gov/vocabulary/relators/dtm	1
-http://purl.org/dc/terms/creator	1
-http://purl.org/dc/terms/description	1
-http://purl.org/dc/terms/issued	1
-http://purl.org/dc/terms/modified	1
-http://purl.org/dc/terms/publisher	1
-http://purl.org/dc/terms/title	1
-http://purl.org/vocab/vann/preferredNamespacePrefix	1
-http://purl.org/vocab/vann/preferredNamespaceUri	1
-http://www.w3.org/2002/07/owl#priorVersion	1
-http://www.w3.org/2002/07/owl#propertyChainAxiom	1
-http://www.w3.org/2002/07/owl#versionInfo	1
-http://www.w3.org/ns/adms#relatedDocumentation	1
-http://xmlns.com/foaf/0.1/workplaceHomepage	1
 property types
 http://www.geonames.org/ontology#Feature	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2002/07/owl#Class	10951423
 http://www.geonames.org/ontology#Code	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2002/07/owl#Class	690
@@ -103,6 +89,73 @@ http://www.w3.org/2002/07/owl#ObjectProperty	http://www.w3.org/2000/01/rdf-schem
 http://www.w3.org/2002/07/owl#ObjectProperty	http://www.w3.org/2000/01/rdf-schema#subPropertyOf	http://www.w3.org/2002/07/owl#TransitiveProperty	5
 http://www.w3.org/2002/07/owl#DatatypeProperty	http://www.w3.org/2000/01/rdf-schema#subPropertyOf	http://www.w3.org/2002/07/owl#DatatypeProperty	4
 http://www.w3.org/2002/07/owl#Restriction	http://www.w3.org/2002/07/owl#hasValue	http://www.geonames.org/ontology#Code	5
-http://xmlns.com/foaf/0.1/Organization	http://id.loc.gov/vocabulary/relators/dtm	http://xmlns.com/foaf/0.1/Person	1
-http://www.w3.org/2002/07/owl#Ontology	http://purl.org/dc/terms/creator	http://xmlns.com/foaf/0.1/Person	1
-http://www.w3.org/2002/07/owl#Ontology	http://purl.org/dc/terms/publisher	http://xmlns.com/foaf/0.1/Organization	1
+literal properties
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#name	http://www.w3.org/2001/XMLSchema#string	10951423
+http://www.geonames.org/ontology#Feature	http://www.w3.org/2003/01/geo/wgs84_pos#lat	http://www.w3.org/2001/XMLSchema#string	10951423
+http://www.geonames.org/ontology#Feature	http://www.w3.org/2003/01/geo/wgs84_pos#long	http://www.w3.org/2001/XMLSchema#string	10951423
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#countryCode	http://www.w3.org/2001/XMLSchema#string	10945713
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#alternateName	http://www.w3.org/2001/XMLSchema#string	5298574
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#alternateName	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	4560316
+http://www.geonames.org/ontology#Feature	http://www.w3.org/2003/01/geo/wgs84_pos#alt	http://www.w3.org/2001/XMLSchema#string	2325787
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#population	http://www.w3.org/2001/XMLSchema#string	474045
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#officialName	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	135355
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#postalCode	http://www.w3.org/2001/XMLSchema#string	133885
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#officialName	http://www.w3.org/2001/XMLSchema#string	3953
+http://www.geonames.org/ontology#Code	http://www.w3.org/2004/02/skos/core#prefLabel	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	3251
+http://www.geonames.org/ontology#Code	http://www.w3.org/2004/02/skos/core#definition	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	1210
+http://www.geonames.org/ontology#Code	http://www.w3.org/2004/02/skos/core#notation	http://www.w3.org/2001/XMLSchema#string	690
+http://www.geonames.org/ontology#Code	http://www.w3.org/2002/07/owl#deprecated	http://www.w3.org/2001/XMLSchema#boolean	23
+http://www.geonames.org/ontology#Code	http://www.w3.org/2004/02/skos/core#historyNote	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	18
+http://www.w3.org/2002/07/owl#ObjectProperty	http://www.w3.org/2000/01/rdf-schema#label	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	16
+http://www.w3.org/2002/07/owl#ObjectProperty	http://www.w3.org/2000/01/rdf-schema#comment	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	11
+http://www.w3.org/2002/07/owl#DatatypeProperty	http://www.w3.org/2000/01/rdf-schema#label	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	10
+http://www.geonames.org/ontology#Class	http://www.w3.org/2000/01/rdf-schema#comment	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	9
+http://www.w3.org/2002/07/owl#Class	http://www.w3.org/2000/01/rdf-schema#comment	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	7
+http://www.w3.org/2002/07/owl#Class	http://www.w3.org/2000/01/rdf-schema#label	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	7
+http://www.w3.org/2002/07/owl#Restriction	http://www.w3.org/2002/07/owl#maxCardinality	http://www.w3.org/2001/XMLSchema#integer	7
+http://www.w3.org/2002/07/owl#DatatypeProperty	http://www.w3.org/2000/01/rdf-schema#comment	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	5
+http://www.w3.org/2002/07/owl#Restriction	http://www.w3.org/2002/07/owl#cardinality	http://www.w3.org/2001/XMLSchema#integer	5
+http://www.w3.org/2002/07/owl#Ontology	http://purl.org/dc/terms/contributor	http://www.w3.org/2001/XMLSchema#string	3
+http://www.w3.org/2002/07/owl#Class	http://www.w3.org/2004/02/skos/core#historyNote	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	2
+http://xmlns.com/foaf/0.1/Person	http://xmlns.com/foaf/0.1/name	http://www.w3.org/2001/XMLSchema#string	2
+http://www.w3.org/2002/07/owl#Ontology	http://purl.org/dc/terms/description	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	1
+http://www.w3.org/2002/07/owl#Ontology	http://purl.org/dc/terms/title	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	1
+http://www.w3.org/2002/07/owl#Ontology	http://www.w3.org/2000/01/rdf-schema#comment	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	1
+http://www.w3.org/2002/07/owl#SymmetricProperty	http://www.w3.org/2000/01/rdf-schema#comment	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	1
+http://www.w3.org/2002/07/owl#TransitiveProperty	http://www.w3.org/2000/01/rdf-schema#comment	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	1
+http://www.w3.org/2002/07/owl#SymmetricProperty	http://www.w3.org/2000/01/rdf-schema#label	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	1
+http://www.w3.org/2002/07/owl#TransitiveProperty	http://www.w3.org/2000/01/rdf-schema#label	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	1
+http://www.w3.org/2002/07/owl#Ontology	http://www.w3.org/2002/07/owl#versionInfo	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	1
+http://www.w3.org/2002/07/owl#DatatypeProperty	http://www.w3.org/2004/02/skos/core#historyNote	http://www.w3.org/1999/02/22-rdf-syntax-ns#langString	1
+http://www.w3.org/2002/07/owl#Ontology	http://purl.org/dc/terms/issued	http://www.w3.org/2001/XMLSchema#string	1
+http://www.w3.org/2002/07/owl#Ontology	http://purl.org/dc/terms/modified	http://www.w3.org/2001/XMLSchema#string	1
+http://www.w3.org/2002/07/owl#Ontology	http://purl.org/vocab/vann/preferredNamespacePrefix	http://www.w3.org/2001/XMLSchema#string	1
+http://www.w3.org/2002/07/owl#Ontology	http://purl.org/vocab/vann/preferredNamespaceUri	http://www.w3.org/2001/XMLSchema#string	1
+http://www.geonames.org/ontology#Code	http://www.w3.org/2004/02/skos/core#definition	http://www.w3.org/2001/XMLSchema#string	1
+http://xmlns.com/foaf/0.1/Organization	http://xmlns.com/foaf/0.1/name	http://www.w3.org/2001/XMLSchema#string	1
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#locationMap	http://www.w3.org/2001/XMLSchema#anyURI	10951423
+http://www.geonames.org/ontology#Feature	http://www.w3.org/2000/01/rdf-schema#isDefinedBy	http://www.w3.org/2001/XMLSchema#anyURI	10951423
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#nearbyFeatures	http://www.w3.org/2001/XMLSchema#anyURI	10613863
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#wikipediaArticle	http://www.w3.org/2001/XMLSchema#anyURI	489230
+http://www.geonames.org/ontology#Feature	http://www.w3.org/2000/01/rdf-schema#seeAlso	http://www.w3.org/2001/XMLSchema#anyURI	476924
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#childrenFeatures	http://www.w3.org/2001/XMLSchema#anyURI	337560
+http://www.geonames.org/ontology#Feature	http://xmlns.com/foaf/0.1/page	http://www.w3.org/2001/XMLSchema#anyURI	38906
+http://www.geonames.org/ontology#Feature	http://www.geonames.org/ontology#neighbouringFeatures	http://www.w3.org/2001/XMLSchema#anyURI	257
+http://www.w3.org/2002/07/owl#ObjectProperty	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	18
+http://www.w3.org/2002/07/owl#Restriction	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	17
+http://www.w3.org/2002/07/owl#DatatypeProperty	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	13
+http://www.w3.org/2002/07/owl#Class	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	7
+http://www.w3.org/2002/07/owl#SymmetricProperty	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	2
+http://www.w3.org/2002/07/owl#TransitiveProperty	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	2
+http://xmlns.com/foaf/0.1/Person	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	2
+http://www.w3.org/2002/07/owl#Class	http://www.w3.org/2002/07/owl#equivalentClass	http://www.w3.org/2001/XMLSchema#anyURI	2
+http://www.w3.org/2002/07/owl#Ontology	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	1
+http://xmlns.com/foaf/0.1/Organization	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://www.w3.org/2001/XMLSchema#anyURI	1
+http://www.w3.org/2002/07/owl#Ontology	http://www.w3.org/2000/01/rdf-schema#isDefinedBy	http://www.w3.org/2001/XMLSchema#anyURI	1
+http://www.w3.org/2002/07/owl#DatatypeProperty	http://www.w3.org/2000/01/rdf-schema#range	http://www.w3.org/2001/XMLSchema#anyURI	1
+http://www.w3.org/2002/07/owl#Ontology	http://www.w3.org/2002/07/owl#priorVersion	http://www.w3.org/2001/XMLSchema#anyURI	1
+http://www.w3.org/2002/07/owl#Ontology	http://www.w3.org/ns/adms#relatedDocumentation	http://www.w3.org/2001/XMLSchema#anyURI	1
+http://www.w3.org/2002/07/owl#Ontology	http://xmlns.com/foaf/0.1/homepage	http://www.w3.org/2001/XMLSchema#anyURI	1
+http://xmlns.com/foaf/0.1/Organization	http://xmlns.com/foaf/0.1/homepage	http://www.w3.org/2001/XMLSchema#anyURI	1
+http://xmlns.com/foaf/0.1/Person	http://xmlns.com/foaf/0.1/page	http://www.w3.org/2001/XMLSchema#anyURI	1
+http://xmlns.com/foaf/0.1/Person	http://xmlns.com/foaf/0.1/workplaceHomepage	http://www.w3.org/2001/XMLSchema#anyURI	1
