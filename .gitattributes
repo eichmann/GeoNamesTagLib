@@ -156,6 +156,7 @@ src/main/java/edu/uiowa/slis/GeoNames/TransitiveProperty/TransitivePropertySubje
 src/main/java/edu/uiowa/slis/GeoNames/TransitiveProperty/TransitivePropertyTheType.java -text
 src/main/java/edu/uiowa/slis/GeoNames/TransitiveProperty/TransitivePropertyTheTypeIterator.java -text
 src/main/java/edu/uiowa/slis/GeoNames/util/Loader.java -text
+src/main/java/edu/uiowa/slis/GeoNames/utility/Indexer.java -text
 src/main/java/edu/uiowa/slis/GeoNames/utility/SPARQL.java -text
 src/main/java/edu/uiowa/slis/GeoNames/utility/SPARQLObject.java -text
 src/main/java/edu/uiowa/slis/GeoNames/utility/SPARQLPredicate.java -text
