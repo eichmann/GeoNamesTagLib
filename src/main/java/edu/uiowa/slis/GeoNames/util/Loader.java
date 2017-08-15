@@ -18,7 +18,7 @@ public class Loader {
     public static void main(String[] args) throws IOException {
 	PropertyConfigurator.configure("log4j.info");
 	BufferedReader reader = new BufferedReader(new FileReader(args[0]));
-	FileOutputStream out = new FileOutputStream(new File("/Volumes/LD4L/geonames.nt"));
+	FileOutputStream out = new FileOutputStream(new File("/usr/local/RAID/geonames.nt"));
 	String buffer = null;
 	int count = 0;
 	

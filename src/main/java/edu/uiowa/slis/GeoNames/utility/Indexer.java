@@ -33,8 +33,8 @@ public class Indexer {
     static String tripleStore = null;
     static String endpoint = null;
 
-    static String dataPath = "/Volumes/LD4L/";
-    static String lucenePath = "/Volumes/LD4L/lucene/geonames/feature";
+    static String dataPath = "/usr/local/RAID/";
+    static String lucenePath = "/usr/local/RAID/lucene/geonames/feature";
     static String prefix = 
 	    "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
 	    + " PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
@@ -50,7 +50,7 @@ public class Indexer {
 	PropertyConfigurator.configure("log4j.info");
 
 	tripleStore = dataPath + "geonames";
-	endpoint = "http://guardian.slis.uiowa.edu:3030/geonames/sparql";
+	endpoint = "http://services.ld4l.org/fuseki/geonames/sparql";
 
 	IndexWriter theWriter = new IndexWriter(FSDirectory.open(new File(lucenePath)), new StandardAnalyzer(org.apache.lucene.util.Version.LUCENE_30), true, IndexWriter.MaxFieldLength.UNLIMITED);
 
