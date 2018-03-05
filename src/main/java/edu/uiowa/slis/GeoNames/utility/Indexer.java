@@ -11,6 +11,7 @@ import org.apache.jena.query.QueryFactory;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.Syntax;
+import org.apache.jena.sparql.function.library.leviathan.log;
 import org.apache.jena.tdb.TDBFactory;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -43,35 +44,81 @@ public class Indexer {
 	    + " PREFIX skos: <http://www.w3.org/2004/02/skos/core#> "
 	    + " PREFIX bib: <http://bib.ld4l.org/ontology/> ";
 
-
+    /*
+     * GeoNames Feature Codes:
+     * 		A - country, state, region, ...
+     * 		H - stream, lake, ...
+     * 		L - park, area, ...
+     * 		P - city, village, ...
+     * 		R - road, railroad
+     * 		S - spot, building, farm
+     * 		T - mountain, hill, rock, ...
+     * 		U - undersea
+     * 		V - forest, heath, ...
+     */
     
     @SuppressWarnings("deprecation")
     public static void main(String[] args) throws CorruptIndexException, LockObtainFailedException, IOException {
 	PropertyConfigurator.configure("log4j.info");
 
-	tripleStore = dataPath + "geonames";
+	tripleStore = dataPath + "geonames_new";
 	endpoint = "http://services.ld4l.org/fuseki/geonames/sparql";
+	
+	if (args.length == 1 && args[0].equals("A"))
+	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
+	else if (args.length == 1 && args[0].equals("H"))
+	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
+	else if (args.length == 1 && args[0].equals("L"))
+	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
+	else if (args.length == 1 && args[0].equals("P"))
+	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
+	else if (args.length == 1 && args[0].equals("R"))
+	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
+	else if (args.length == 1 && args[0].equals("S"))
+	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
+	else if (args.length == 1 && args[0].equals("T"))
+	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
+	else if (args.length == 1 && args[0].equals("U"))
+	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
+	else if (args.length == 1 && args[0].equals("V"))
+	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
+	else if (args.length == 1 && args[0].equals("AP"))
+	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
+	else if (args.length == 1 && args[0].equals("feature"))
+	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
+	else {
+	    logger.error("parameter must be one of : A, H, L, P, R, S, T U, V, AP, or feature (all)");
+	    return;
+	}
 
 	IndexWriter theWriter = new IndexWriter(FSDirectory.open(new File(lucenePath)), new StandardAnalyzer(org.apache.lucene.util.Version.LUCENE_30), true, IndexWriter.MaxFieldLength.UNLIMITED);
 
-	indexFeatures(theWriter);
+	if (args.length == 1 && args[0].equals("feature")) {
+	    indexFeatures(theWriter, null);
+	} else if (args.length == 1 && args[0].equals("AP")) {
+	    indexFeatures(theWriter, "A");
+	    indexFeatures(theWriter, "P");
+	} else {
+	    indexFeatures(theWriter, null);
+	}
 
 	logger.info("optimizing index...");
 	theWriter.optimize();
 	theWriter.close();
     }
     
-    static void indexFeatures(IndexWriter theWriter) throws CorruptIndexException, IOException {
+    static void indexFeatures(IndexWriter theWriter, String mode) throws CorruptIndexException, IOException {
 	int count = 0;
 	String query =
-		" SELECT ?s ?lab where { "+
-		"  ?s rdf:type <http://www.geonames.org/ontology#Feature> . "+
-		"  OPTIONAL { ?s rdfs:label ?labelUS  FILTER (lang(?labelUS) = \"en-US\") } "+
-		"  OPTIONAL { ?s rdfs:label ?labelENG FILTER (langMatches(?labelENG,\"en\")) } "+
-		"  OPTIONAL { ?s rdfs:label ?label    FILTER (lang(?label) = \"\") } "+
-		"  OPTIONAL { ?s rdfs:label ?labelANY FILTER (lang(?labelANY) != \"\") } "+
-		"  OPTIONAL { ?s <http://www.geonames.org/ontology#name> ?altLabel } "+
-		"  BIND(COALESCE(?labelUS, ?labelENG, ?label, ?labelANY , ?altLabel) as ?lab) "+
+		" SELECT ?s ?lab where { " +
+		"  ?s rdf:type <http://www.geonames.org/ontology#Feature> . " +
+		(mode == null ? "" : "?s <http://www.geonames.org/ontology#featureClass> <http://www.geonames.org/ontology#" + mode + ">") + 
+		"  OPTIONAL { ?s rdfs:label ?labelUS  FILTER (lang(?labelUS) = \"en-US\") } " +
+		"  OPTIONAL { ?s rdfs:label ?labelENG FILTER (langMatches(?labelENG,\"en\")) } " +
+		"  OPTIONAL { ?s rdfs:label ?label    FILTER (lang(?label) = \"\") } " +
+		"  OPTIONAL { ?s rdfs:label ?labelANY FILTER (lang(?labelANY) != \"\") } " +
+		"  OPTIONAL { ?s <http://www.geonames.org/ontology#name> ?altLabel } " +
+		"  BIND(COALESCE(?labelUS, ?labelENG, ?label, ?labelANY , ?altLabel) as ?lab) " +
 		"}";
 	ResultSet rs = getResultSet(prefix + query);
 	while (rs.hasNext()) {
