@@ -99,7 +99,7 @@ public class Indexer {
 	    indexFeatures(theWriter, "A");
 	    indexFeatures(theWriter, "P");
 	} else {
-	    indexFeatures(theWriter, null);
+	    indexFeatures(theWriter, args[0]);
 	}
 
 	logger.info("optimizing index...");
@@ -120,6 +120,8 @@ public class Indexer {
 		"  OPTIONAL { ?s <http://www.geonames.org/ontology#name> ?altLabel } " +
 		"  BIND(COALESCE(?labelUS, ?labelENG, ?label, ?labelANY , ?altLabel) as ?lab) " +
 		"}";
+
+	logger.info("indexing feature class " + mode);
 	ResultSet rs = getResultSet(prefix + query);
 	while (rs.hasNext()) {
 	    QuerySolution sol = rs.nextSolution();
