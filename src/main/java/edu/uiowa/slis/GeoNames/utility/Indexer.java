@@ -35,6 +35,8 @@ public class Indexer {
     static String endpoint = null;
 
     static String dataPath = "/usr/local/RAID/";
+    static String basePath = "LD4L/lucene/geonames/";
+    static boolean strictMode = false;
     static String lucenePath = "/usr/local/RAID/lucene/geonames/feature";
     static String prefix = 
 	    "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
@@ -64,28 +66,34 @@ public class Indexer {
 	tripleStore = dataPath + "geonames_new";
 	endpoint = "http://services.ld4l.org/fuseki/geonames/sparql";
 	
-	if (args.length == 1 && args[0].equals("A"))
-	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
-	else if (args.length == 1 && args[0].equals("H"))
-	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
-	else if (args.length == 1 && args[0].equals("L"))
-	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
-	else if (args.length == 1 && args[0].equals("P"))
-	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
-	else if (args.length == 1 && args[0].equals("R"))
-	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
-	else if (args.length == 1 && args[0].equals("S"))
-	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
-	else if (args.length == 1 && args[0].equals("T"))
-	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
-	else if (args.length == 1 && args[0].equals("U"))
-	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
-	else if (args.length == 1 && args[0].equals("V"))
-	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
-	else if (args.length == 1 && args[0].equals("AP"))
-	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
-	else if (args.length == 1 && args[0].equals("feature"))
-	    lucenePath = dataPath + "LD4L/lucene/geonames/" + args[0] + "/";
+	if (args.length > 1) {
+	    basePath = "LD4L/lucene/geonames_strict/";
+	    strictMode = true;
+	    logger.info("strict mode enabled.");
+	}
+	
+	if (args.length >= 1 && args[0].equals("A"))
+	    lucenePath = dataPath + basePath + args[0] + "/";
+	else if (args.length >= 1 && args[0].equals("H"))
+	    lucenePath = dataPath + basePath + args[0] + "/";
+	else if (args.length >= 1 && args[0].equals("L"))
+	    lucenePath = dataPath + basePath + args[0] + "/";
+	else if (args.length >= 1 && args[0].equals("P"))
+	    lucenePath = dataPath + basePath + args[0] + "/";
+	else if (args.length >= 1 && args[0].equals("R"))
+	    lucenePath = dataPath + basePath + args[0] + "/";
+	else if (args.length >= 1 && args[0].equals("S"))
+	    lucenePath = dataPath + basePath + args[0] + "/";
+	else if (args.length >= 1 && args[0].equals("T"))
+	    lucenePath = dataPath + basePath + args[0] + "/";
+	else if (args.length >= 1 && args[0].equals("U"))
+	    lucenePath = dataPath + basePath + args[0] + "/";
+	else if (args.length >= 1 && args[0].equals("V"))
+	    lucenePath = dataPath + basePath + args[0] + "/";
+	else if (args.length >= 1 && args[0].equals("AP"))
+	    lucenePath = dataPath + basePath + args[0] + "/";
+	else if (args.length >= 1 && args[0].equals("feature"))
+	    lucenePath = dataPath + basePath + args[0] + "/";
 	else {
 	    logger.error("parameter must be one of : A, H, L, P, R, S, T U, V, AP, or feature (all)");
 	    return;
@@ -93,9 +101,9 @@ public class Indexer {
 
 	IndexWriter theWriter = new IndexWriter(FSDirectory.open(new File(lucenePath)), new StandardAnalyzer(org.apache.lucene.util.Version.LUCENE_30), true, IndexWriter.MaxFieldLength.UNLIMITED);
 
-	if (args.length == 1 && args[0].equals("feature")) {
+	if (args.length >= 1 && args[0].equals("feature")) {
 	    indexFeatures(theWriter, null);
-	} else if (args.length == 1 && args[0].equals("AP")) {
+	} else if (args.length >= 1 && args[0].equals("AP")) {
 	    indexFeatures(theWriter, "A");
 	    indexFeatures(theWriter, "P");
 	} else {
@@ -136,13 +144,14 @@ public class Indexer {
 	    
 	    indexVariant(theDocument, address, "alternateName");
 	    indexVariant(theDocument, address, "officialName");
-	    indexVariant2(theDocument, address, "parentCountry");
-	    indexVariant2(theDocument, address, "parentFeature");
-	    indexVariant2(theDocument, address, "parentADM1");
-	    indexVariant2(theDocument, address, "parentADM2");
-	    indexVariant2(theDocument, address, "parentADM3");
-	    indexVariant2(theDocument, address, "parentADM4");
-	    
+	    if (!strictMode) {
+		indexVariant2(theDocument, address, "parentCountry");
+		indexVariant2(theDocument, address, "parentFeature");
+		indexVariant2(theDocument, address, "parentADM1");
+		indexVariant2(theDocument, address, "parentADM2");
+		indexVariant2(theDocument, address, "parentADM3");
+		indexVariant2(theDocument, address, "parentADM4");
+	    }
 	    theWriter.addDocument(theDocument);
 	    count++;
 	    if (count % 10000 == 0)
